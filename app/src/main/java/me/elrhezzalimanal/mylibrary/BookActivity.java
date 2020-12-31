@@ -20,10 +20,10 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         initViews();
-
+        String longDescription = "I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description";
         //TODO: get the data from recycler view in here
         Book book = new Book(1,"1Q84","Haruki Murakami",1350,"https://images-na.ssl-images-amazon.com/images/I/41FdmYnaNuL._SX322_BO1,204,203,200_.jpg",
-                "A work of maddening brilliance", "I am the long description");
+                "A work of maddening brilliance", longDescription +longDescription + longDescription);
 
         setData(book);
     }
