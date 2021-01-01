@@ -79,6 +79,7 @@ public class Utils {
     public static ArrayList<Book> getFavoriteBooks() {
         return favoriteBooks;
     }
+
     public Book getBookById(int id){
         for(Book b : allBooks){
             if (b.getId() == id){
@@ -86,5 +87,22 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    public boolean addToAlreadyRead(Book book){
+        return alreadyReadBooks.add(book);
+        //add returns true if the book was added successfully
+    }
+
+    public boolean addToWantToRead(Book book){
+        return wantToReadBooks.add(book);
+    }
+
+    public boolean addToFavorite(Book book){
+        return favoriteBooks.add(book);
+    }
+
+    public boolean addToCurrentlyReading(Book book){
+        return currentlyReadingBooks.add(book);
     }
 }
