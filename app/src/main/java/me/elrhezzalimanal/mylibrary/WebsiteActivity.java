@@ -22,7 +22,7 @@ public class WebsiteActivity extends AppCompatActivity {
             webView = findViewById(R.id.webView);
             webView.loadUrl(url);
             webView.setWebViewClient(new WebViewClient());
-            webView.getSettings().setJavaScriptEnabled(true);
+            //webView.getSettings().setJavaScriptEnabled(true);
         }
     }
 
