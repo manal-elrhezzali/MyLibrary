@@ -105,4 +105,22 @@ public class Utils {
     public boolean addToCurrentlyReading(Book book){
         return currentlyReadingBooks.add(book);
     }
+
+    public boolean removeFromAlreadyRead(Book book){
+        return alreadyReadBooks.remove(book);
+        // remove() Returns true if this list contained the specified
+        // element (or equivalently, if this list changed as a result of the call
+    }
+
+    public boolean removeFromWantToRead(Book book){
+        return wantToReadBooks.remove(book);
+    }
+
+    public boolean removeFromCurrentlyReading(Book book){
+        return currentlyReadingBooks.remove(book);
+    }
+
+    public boolean removeFromFavorites(Book book){
+        return favoriteBooks.remove(book);
+    }
 }
