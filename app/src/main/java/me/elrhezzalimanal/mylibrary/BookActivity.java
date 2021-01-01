@@ -2,6 +2,7 @@ package me.elrhezzalimanal.mylibrary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 public class BookActivity extends AppCompatActivity {
+
+    public static final String BOOK_ID_KEY = "bookId";
+
     private TextView txtBookName, txtAuthor, txtPages, txtDescription;
     private Button btnAddToWantToRead, btnAddToAlreadyRead, btnAddToCurrentlyReading, btnAddToFavorite;
     private ImageView bookImage;
@@ -20,12 +24,22 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         initViews();
-        String longDescription = "I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description";
-        //TODO: get the data from recycler view in here
-        Book book = new Book(1,"1Q84","Haruki Murakami",1350,"https://images-na.ssl-images-amazon.com/images/I/41FdmYnaNuL._SX322_BO1,204,203,200_.jpg",
-                "A work of maddening brilliance", longDescription +longDescription + longDescription);
+//         made this a comment cuz now we get the data from the RecyclerView by using the intent
+//        String longDescription = "I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description"+"\n"+"I am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long descriptionI am the long description";
+//        Book book = new Book(1,"1Q84","Haruki Murakami",1350,"https://images-na.ssl-images-amazon.com/images/I/41FdmYnaNuL._SX322_BO1,204,203,200_.jpg",
+//                "A work of maddening brilliance", longDescription +longDescription + longDescription);
+        Intent intent = getIntent();
+        if (null != intent){
+            int bookId = intent.getIntExtra(BOOK_ID_KEY,-1);
+            if (bookId != -1){ // to make sure that we received data from the intent
+                Book incomingBook = Utils.getInstance().getBookById(bookId);
+                if (null != incomingBook){ //checks if we found a book in the allBooks list that matches the id
+                    setData(incomingBook);
 
-        setData(book);
+                }
+
+            }
+        }
     }
 
     private void setData(Book book) {
