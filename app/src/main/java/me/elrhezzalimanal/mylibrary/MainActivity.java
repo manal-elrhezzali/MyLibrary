@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Utils.getInstance();
+        Utils.getInstance(this);
     }
 
     private void initViews() {

@@ -38,7 +38,7 @@ public class AllBooksActivity extends AppCompatActivity {
          *       "A great book", "Long Description Long Description Long Description"));
          */
 
-        adapter.setBooks(Utils.getInstance().getAllBooks());
+        adapter.setBooks(Utils.getInstance(this).getAllBooks());
 
 
     }

@@ -37,7 +37,7 @@ public class BookActivity extends AppCompatActivity {
         if (null != intent){
             int bookId = intent.getIntExtra(BOOK_ID_KEY,-1);
             if (bookId != -1){ // to make sure that we received data from the intent
-                Book incomingBook = Utils.getInstance().getBookById(bookId);
+                Book incomingBook = Utils.getInstance(this).getBookById(bookId);
                 if (null != incomingBook){ //checks if we found a book in the allBooks list that matches the id
                     setData(incomingBook);
 
@@ -60,7 +60,7 @@ public class BookActivity extends AppCompatActivity {
      * @param incomingBook
      */
     private void handleCurrentlyReadingBooks(final Book incomingBook){
-        ArrayList<Book> currentlyReadingBooks = Utils.getInstance().getCurrentlyReadingBooks();
+        ArrayList<Book> currentlyReadingBooks = Utils.getInstance(this).getCurrentlyReadingBooks();
         boolean existInCurrentlyReadingBooks = false;
         for (Book b: currentlyReadingBooks) {
             if (b.getId() == incomingBook.getId()){
@@ -75,7 +75,7 @@ public class BookActivity extends AppCompatActivity {
             btnAddToCurrentlyReading.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (Utils.getInstance().addToCurrentlyReading(incomingBook)){
+                    if (Utils.getInstance(BookActivity.this).addToCurrentlyReading(incomingBook)){
                         Toast.makeText(BookActivity.this, "Book Added Successfully", Toast.LENGTH_SHORT).show();
                         //navigates the user to a new activity that shows the elements of the static list currentlyReadingBooks
                         Intent intent = new Intent(BookActivity.this, CurrentlyReadingActivity.class);
@@ -96,7 +96,7 @@ public class BookActivity extends AppCompatActivity {
      */
 
     private void handleFavoriteBooks(final Book incomingBook){
-        ArrayList<Book> favoriteBooks = Utils.getInstance().getFavoriteBooks();
+        ArrayList<Book> favoriteBooks = Utils.getInstance(this).getFavoriteBooks();
         boolean existInFavoriteBooks = false;
         for (Book b: favoriteBooks) {
             if (b.getId() == incomingBook.getId()){
@@ -111,7 +111,7 @@ public class BookActivity extends AppCompatActivity {
             btnAddToFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (Utils.getInstance().addToFavorite(incomingBook)){
+                    if (Utils.getInstance(BookActivity.this).addToFavorite(incomingBook)){
                         Toast.makeText(BookActivity.this, "Book Added Successfully", Toast.LENGTH_SHORT).show();
                         //navigates the user to a new activity that shows the elements of the static list currentlyReadingBooks
                         Intent intent = new Intent(BookActivity.this, FavoriteBooksActivity.class);
@@ -130,7 +130,7 @@ public class BookActivity extends AppCompatActivity {
      * @param incomingBook
      */
     private void handleWantToReadBooks(final Book incomingBook){
-        ArrayList<Book> wantToReadBooks = Utils.getInstance().getWantToReadBooks();
+        ArrayList<Book> wantToReadBooks = Utils.getInstance(this).getWantToReadBooks();
         boolean existInWantToReadBooks = false;
         for (Book b: wantToReadBooks) {
             if (b.getId() == incomingBook.getId()){
@@ -145,7 +145,7 @@ public class BookActivity extends AppCompatActivity {
             btnAddToWantToRead.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (Utils.getInstance().addToWantToRead(incomingBook)){
+                    if (Utils.getInstance(BookActivity.this).addToWantToRead(incomingBook)){
                         Toast.makeText(BookActivity.this, "Book Added Successfully", Toast.LENGTH_SHORT).show();
                         //navigates the user to a new activity that shows the elements of the static list alreadyReadyBooks
                         Intent intent = new Intent(BookActivity.this, WantToReadActivity.class);
@@ -166,7 +166,7 @@ public class BookActivity extends AppCompatActivity {
      */
     private void handleAlreadyRead(final Book incomingBook) {
         //checking if the incomingBook already exists in the alreadyReadBooks static list
-        ArrayList<Book> alreadyReadBooks = Utils.getInstance().getAlreadyReadBooks();
+        ArrayList<Book> alreadyReadBooks = Utils.getInstance(this).getAlreadyReadBooks();
         boolean existInAlreadyReadBooks = false;
         for (Book b: alreadyReadBooks) {
             if (b.getId() == incomingBook.getId()){
@@ -180,7 +180,7 @@ public class BookActivity extends AppCompatActivity {
             btnAddToAlreadyRead.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (Utils.getInstance().addToAlreadyRead(incomingBook)){
+                    if (Utils.getInstance(BookActivity.this).addToAlreadyRead(incomingBook)){
                         Toast.makeText(BookActivity.this, "Book Added Successfully", Toast.LENGTH_SHORT).show();
                         //navigates the user to a new activity that shows the elements of the static list alreadyReadyBooks
                         Intent intent = new Intent(BookActivity.this, AlreadyReadBookActivity.class);
